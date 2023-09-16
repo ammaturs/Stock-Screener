@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action = "/sell" method = "post">
+        <div>
+            <select class="form-select" aria-label="Default select example" id = "symbol" name = "symbol" style = "width: 20%">
+                <option selected disabled>Pick your stock</option>
+                {% for entry in portfolio %}
+                    <option value="{{ entry['Symbol'] }}">{{ entry['Symbol'] }}</option>
+                {% endfor %}
+            </select><br>
+        </div>
+        <div class="col-md-6"> <!-- Adjust the column width as needed -->
+            <input autocomplete="off" autofocus class="form-control" id="shares" name="shares" placeholder="Shares" type="text" style = "width: 20%">
+        </div><br>
+        <div class="text-start">
+            <button class="btn btn-primary" type="submit">Sell</button>
+        </div>
+    </form>
+{% endblock %}
